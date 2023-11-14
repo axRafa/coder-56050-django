@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'stock',
-]
+    'ventas',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

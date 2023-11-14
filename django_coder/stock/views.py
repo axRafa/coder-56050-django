@@ -7,7 +7,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def crear_insumo(request):
-    insumo = Insumo(nombre="Tornillo", descripcion="Tipo Alen", cantidad_en_stock=567)
+    insumo = Insumo(nombre="Tornillo", descripcion="Tipo Alen - 3/4", unidad_de_medida="gramos", cantidad_en_stock=567)
     
     insumo.save()
     
