@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<form action='/stock/crear_insumo/' method="post">
+    {% csrf_token %}
+    <table>
+        {{formulario.as_table}}
+    </table>
+
+{% endblock %}
