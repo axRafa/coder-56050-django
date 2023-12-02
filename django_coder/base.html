@@ -46,35 +46,50 @@
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
-        <h1 class="text-light"><a href="/"><span>Moderna</span></a></h1>
+        <h1 class="text-light"><a href="/"><span>ALMACEN</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="active " href="/">Home</a></li>
-          <li><a href="/stock/crear_producto/">Crear Nuevo Producto</a></li>
-          <li><a href="/stock/crear_insumo/">Crear Nuevo Insumo</a></li>
-          <li><a href="/stock/busqueda_bd">Busqueda en Base de Datos</a></li>
-          <li><a href="/stock/comprar_producto/">Comprar Producto</a></li>
-
+          <li><a class="active" href="/">INICIO</a></li>
+          <li><a href="/stock/ingresar_producto">STOCK</a></li>
+          <li><a href="contact.html">VENTAS</a></li>
+          <li><a href="clientes">REGISTRARSE</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
     </div>
   </header><!-- End Header -->
-  <br>
-  <br>
-  <br>
+
+<br>
+<br> 
+<br>
+<br>
 <main>
   {% block contenido %}
   {% endblock %}
-
 </main>
   <!-- ======= Footer ======= -->
   <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+          </div>
+          <div class="col-lg-6">
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="footer-top">
       <div class="container">
         <div class="row">

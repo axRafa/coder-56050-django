@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<br>
+
+<form action='/stock/busqueda_bd/' method="post">
+    {% csrf_token %}
+    <p> Nombre del producto: <input type = "text" name="nombre">
+    <br>
+    <input type = "submit" value="Enviar">
+ </form>
+
+{% for producto in lista %}
+
+    Nombre de producto: {{producto.nombre}}, Cantidad en Stock: {{producto.cantidad_en_stock}}
+    <br>
+
+{% endfor %}
+
+{% endblock %}

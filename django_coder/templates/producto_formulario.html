@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block contenido %}
+<br>
 
 <form action='/stock/crear_producto/' method="post">
     {% csrf_token %}
@@ -9,6 +10,7 @@
     <p> Descripcion del producto: <input type = "text" name="descripcion">
     <p> Cantidad en stock: <input type = "number" name="cantidad_en_stock">
     <p> Otro atributo <input type="text" name="otra_cosa">
+    <br>
     <input type = "submit" value="Enviar">
  </form>
 

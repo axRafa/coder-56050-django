@@ -1,25 +1,9 @@
 from django.shortcuts import render
 from stock.models import Insumo, Producto
-from django.template import loader
-from django.http import HttpResponse
 from stock.forms import InsumoFormulario
 
 
-# Create your views here.
-
-def crear_insumo(request):
-    insumo = Insumo(nombre="Tornillo", descripcion="Tipo Alen - 3/4", unidad_de_medida="gramos", cantidad_en_stock=567)
-    
-    insumo.save()
-    
-    template = loader.get_template("creacion_insumo.html")
-    
-    doc = template.render({"nombre": insumo.nombre})
-    
-    return HttpResponse(doc)
-
-def crear_producto(request):    
-
+def crear_producto(request): 
     print("Mostrar request.post:")
     print(request.POST)
     
@@ -35,7 +19,6 @@ def crear_producto(request):
     return render(request, 'producto_formulario.html')
 
 def crear_insumo(request):
-    
     if request.method == "POST":
         nuevo_formulario = InsumoFormulario(request.POST)
         
@@ -53,3 +36,32 @@ def crear_insumo(request):
     else:
         nuevo_formulario = InsumoFormulario()
         return render(request, 'insumo_formulario.html', {"formulario": nuevo_formulario})
+    
+
+##################################### Vistas que hicimos en el afterclass ############################################
+def busqueda_en_bd(request):
+    if request.method == "POST":
+        busqueda = request.POST["nombre"]
+        # Con Producto.objects.filter obtengo una lista de todos los elementos que tengan el nombre que ingresé por el formulario
+        # __icontains viene de "if contains", con lo cual en lugar de buscar una coincidencia exacta, va a buscar cualquier elemento
+        # que contenga el texto que ingresamos en la búsqueda.
+        lista_productos = Producto.objects.filter(nombre__icontains=busqueda)
+        
+        return render(request, 'busqueda.html', {'lista': lista_productos})
+    
+    return render(request, 'busqueda.html')
+
+def comprar_producto(request):
+    # En esta vista estamos buscando un producto en específico y al comprarlo vamos a descontar la cantidad comprada
+    # del stock.
+    if request.method == "POST":
+        busqueda = request.POST["nombre"]
+        producto = Producto.objects.get(nombre=busqueda)
+        cantidad_compra = int(request.POST["cantidad"])
+        # Modificar el stock del producto y guardarlo en la base de datos:
+        producto.cantidad_en_stock = producto.cantidad_en_stock - cantidad_compra
+        producto.save()
+        
+        return render(request, 'comprar_producto.html', {'producto': producto.nombre, 'cantidad_stock': producto.cantidad_en_stock})
+    
+    return render(request, 'comprar_producto.html')
