@@ -40,8 +40,9 @@ def crear_insumo(request):
 
 ##################################### Vistas que hicimos en el afterclass ############################################
 def busqueda_en_bd(request):
-    if request.method == "POST":
-        busqueda = request.POST["nombre"]
+    if request.GET.get("nombre", False): # Uso el método .get() de diccionarios para obtener el nombre que recibo desde el html
+                                         # Si dicho nombre no existe en el diccionario, entonces devuelve False y no entra en el if
+        busqueda = request.GET["nombre"]
         # Con Producto.objects.filter obtengo una lista de todos los elementos que tengan el nombre que ingresé por el formulario
         # __icontains viene de "if contains", con lo cual en lugar de buscar una coincidencia exacta, va a buscar cualquier elemento
         # que contenga el texto que ingresamos en la búsqueda.

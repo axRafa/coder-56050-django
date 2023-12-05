@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<br>
+
+{% for cliente in clientes %}
+    <li>Nombre de cliente: {{cliente.nombre}}, Email: {{cliente.email}}</li>
+    <button>
+        <a href="{% url 'eliminar cliente' cliente.nombre %}"> Eliminar</a>
+    </button>
+    <button>
+        <a href="{% url 'editar cliente' cliente.nombre %}"> Editar</a>
+    </button>
+
+{% endfor %}
+{% endblock %}

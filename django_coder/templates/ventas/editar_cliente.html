@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<br>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{mi_formulario.as_p}}
+        <input type="submit" value="Submit">
+    </table>
+
+{% endblock %}

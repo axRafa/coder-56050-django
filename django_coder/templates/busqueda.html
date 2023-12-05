@@ -4,8 +4,7 @@
 {% block contenido %}
 <br>
 
-<form action='/stock/busqueda_bd/' method="post">
-    {% csrf_token %}
+<form action='/stock/busqueda_bd/' method="GET">
     <p> Nombre del producto: <input type = "text" name="nombre">
     <br>
     <input type = "submit" value="Enviar">
