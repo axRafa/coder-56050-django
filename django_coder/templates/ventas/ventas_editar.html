@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<h1>Editar Venta</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Editar">
+</form>
+
+{% endblock contenido %}

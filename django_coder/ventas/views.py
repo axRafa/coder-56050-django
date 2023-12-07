@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from ventas.forms import ClienteFormulario
 from ventas.models import Cliente, Venta
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 
 ##################### CRUD CLIENTES ############################
@@ -65,7 +65,17 @@ class VentaCreateView(CreateView):
     fields = ['cliente', 'nro_transaccion', 'producto', 'cantidad', 'fecha_de_venta']
 
 class VentaUpdateView(UpdateView):
-    pass
+    model = Venta
+    template_name = "ventas/ventas_editar.html"
+    success_url = reverse_lazy("ventas lista")
+    fields = ['producto', 'cantidad', 'fecha_de_venta']
 
 class VentaDeleteView(DeleteView):
-    pass
+    model = Venta
+    template_name = "ventas/ventas_eliminar.html"
+    success_url = reverse_lazy("ventas lista")
+
+class VentaDetailView(DetailView):
+    model = Venta
+    template_name = "ventas/ventas_detalle.html"
+    success_url = reverse_lazy("ventas lista")

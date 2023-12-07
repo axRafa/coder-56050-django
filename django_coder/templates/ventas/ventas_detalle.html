@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<h1>Curso Detalle</h1>
+
+<p>Nombre del cliente: <i>{{venta.cliente}}</i></p>
+<p>Número de transacción: <i>{{venta.nro_transaccion}}</i></p>
+<p>Producto: <i>{{venta.producto}}</i></p>
+<p>Cantidad: <i>{{venta.cantidad}}</i></p>
+<p>Fecha de la transacción: <i>{{venta.fecha_de_venta}}</i></p>
+<p>
+    <a href="{% url 'ventas lista' %}">Volver a ventas</a>
+</p>
+
+{% endblock %}

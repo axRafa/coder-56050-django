@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+
+<h1>Eliminar Venta</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    Estas seguro que deseas eliminar la venta nro {{venta.nro_transaccion}} del cliente: {{venta.cliente}}??
+    <input type="submit" value="Eliminar">
+</form>
+
+{% endblock %}

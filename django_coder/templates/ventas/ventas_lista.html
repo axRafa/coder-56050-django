@@ -3,12 +3,20 @@
 {% block contenido %}
 <h1>Lista Ventas</h1>
 
-<a href={% url 'ventas lista' %}>Ventas</a>
 {% for venta in ventas %}
     <li>{{venta}}
-
+        <p>
+            <!-- A cada vista le vamos a pasar como argumento el atributo PK que significa Primary Key
+            En nuestro caso el PK es el número de ID que Django asigna automaticamente en cada modelo.
+            Se utiliza este atributo porque es un número único y no puede generar confusión con ningún otro elemento de la misma clase.
+            Al definir la vista no especificamos que se deba recibir este argumento, pero las GenericViews de las que heredamos se encargan de eso.-->
+            <a href="{% url 'ventas detalle' venta.pk %}">Ver</a>
+            |
+            <a href="{% url 'ventas editar' venta.pk %}">Editar</a>
+            |
+            <a href="{% url 'ventas eliminar' venta.pk %}">Borrar</a>
+        </p>
     </li>
-
 
 {% endfor %}
 
