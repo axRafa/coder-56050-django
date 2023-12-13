@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block contenido %}
+<br>
+
+<h2>Editar Perfil de Usuario</h2>
+
+<!--El detalle que faltaba era agregar el enctype este formulario.
+    Enctype define tipo de codificación que se le dará a los archivos
+    al enviarlos en el request porque no se pueden enviar en su
+    formato original. Por eso el formulario necesita este
+    atributo para definir cómo va a codificarlos y si no está presente
+    no lo puede enviar, por eso la página web actúa como si no lo hubiéramos
+    cargado-->
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Guardar Perfil</button>
+</form>
+
+{% endblock %}

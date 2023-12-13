@@ -83,13 +83,16 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Usuarios</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              {% if not request.user.is_authenticated %}
+              <li><i class="bx bx-chevron-right"></i> <a href="/usuarios/registro">Registrar Usuario</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/usuarios/login">Login</a></li>
+              {% else %}
+              <li><i class="bx bx-chevron-right"></i> <a href="/usuarios/logout">Logout</a></li>
+              {% endif %}
+              <li><i class="bx bx-chevron-right"></i> <a href="/usuarios/crear_perfil">Crear Perfil de Usuario</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/usuarios/perfil_usuario">Ver Perfil de Usuario</a></li>
             </ul>
           </div>
 

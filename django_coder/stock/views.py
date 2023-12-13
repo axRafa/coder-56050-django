@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from stock.models import Insumo, Producto
 from stock.forms import InsumoFormulario
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url="login")
 def crear_producto(request): 
     print("Mostrar request.post:")
     print(request.POST)
